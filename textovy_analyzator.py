@@ -32,24 +32,24 @@ garpike and stingray are also present.'''
 ]
 
 # uživatelský vstup
-# oddelovac = 30 * "="
-# oddelovac1 = 30 * "-"
-# registrovani_uzivatele = ["bob", "ann", "mike", "liz"]
-# hesla = ["123", "pass123", "password123", "pass123"]
-# uzivatele_hesla = dict(zip(registrovani_uzivatele, hesla))
-# print(uzivatele_hesla)
-# uzivatel = input("Jméno: ")
-# heslo = input("Heslo: ")
-#
-# if uzivatel in uzivatele_hesla and uzivatele_hesla[uzivatel] == heslo:
-#     print(f"{oddelovac1}\n     Vítej uživateli {uzivatel}!\n{oddelovac1}")
-#
-# else:
-#     print("Zadali jste neplatné uživatelské jméno nebo heslo. Ukončuji...")
-#     exit()
+oddelovac = 30 * "="
+oddelovac1 = 30 * "-"
+registrovani_uzivatele = ["bob", "ann", "mike", "liz"]
+hesla = ["123", "pass123", "password123", "pass123"]
+uzivatele_hesla = dict(zip(registrovani_uzivatele, hesla))
+print(uzivatele_hesla)
+uzivatel = input("Jméno: ")
+heslo = input("Heslo: ")
+
+if uzivatel in uzivatele_hesla and uzivatele_hesla[uzivatel] == heslo:
+    print(f"{oddelovac1}\n     Vítej uživateli {uzivatel}!\n{oddelovac1}")
+
+else:
+    print("Zadali jste neplatné uživatelské jméno nebo heslo. Ukončuji...")
+    exit()
 
 #výběr textu
-print("Pro výběr textu zadejte číslo textu. Máte k dispozici 3 texty. Výběr textu musí být číslo od 1 do 3.")
+print("Máte k dispozici 3 texty.\nVýběr textu musí být číslo od 1 do 3.")
 vyber_textu = input("Zadejte číslo textu: ")
 if not vyber_textu.isnumeric():
     print("Tento text není k dispozici. Ukončuji.")
@@ -61,64 +61,64 @@ else:
     print("Vybral jste text č.", vyber_textu)
 
 #výpis textu
+
 vybrany_text = TEXTS[int(vyber_textu) - 1]
 print(vybrany_text)
+
 vycisteny_text = []
 for slova in vybrany_text.split():
     vycisteny_text.append(slova.strip(".,:;"))
 
-vyskyt_slov = {}
+pocet_slov = 0
+pocet_velka_zac = 0
+pocet_velka = 0
+pocet_mala = 0
+pocet_cisel = 0
+suma_cisel = 0
+graf_priprava = []
+
 for slovo in vycisteny_text:
-    if slovo not in vyskyt_slov:
-        vyskyt_slov.setdefault(slovo, 1)
-    elif slovo in vyskyt_slov:
-        vyskyt_slov[slovo] += 1
+        graf_priprava.append(len(slovo))
+        pocet_slov = pocet_slov + 1
+        if slovo.istitle():
+            pocet_velka_zac += 1
+        elif slovo.isupper():
+            pocet_velka +=1
+        elif slovo.islower():
+            pocet_mala += 1
+        elif slovo.isnumeric():
+            pocet_cisel += 1
+            suma_cisel += int(slovo)
 
 
-pocet_slov = sum(vyskyt_slov.values())
-pocet_velka_zac = {}
-pocet_velka = {}
-pocet_mala = {}
-pocet_cisel = {}
-suma_cisel = {}
-cisla_v_textu = []
 
-for sl, vyskyt in vyskyt_slov.items():
-    if sl.istitle() == True:
-        pocet_velka_zac[sl] = vyskyt
-    elif sl.islower() == True:
-        pocet_mala[sl] = vyskyt
-    elif sl.isupper() == True:
-        pocet_velka[sl] = vyskyt
-    elif sl.isnumeric == True:
-        for cisla in sl:
-            print(cisla)
-            cisla_v_textu.append(cisla)
-print(cisla_v_textu)
-
-
+print(pocet_slov)
 print(pocet_velka_zac)
-print(pocet_mala)
 print(pocet_velka)
+print(pocet_mala)
+print(pocet_cisel)
+print(suma_cisel)
+print(graf_priprava)
 
-    # vyskyt_slov["počet slov"] = tuple(enumerate(vycisteny_text))[-1][0]
-    # if slovo.istitle() == True:
-    #     velka_pismena_zac = []
-    #     velka_pismena_zac.append(slovo)
-    #     print(velka_pismena_zac)
-    #     vyskyt_slov["Počet slov začínajících velkým písmenem"] = tuple(enumerate(velka_pismena_zac))[-1][0]
-    # elif slovo.isupper() == True:
-    #     velka_pismena = []
-    #     velka_pismena.append(slovo)
-    #     vyskyt_slov["Počet slov psaných velkým písmenem"] = tuple(enumerate(velka_pismena))[-1][0]
-    # elif slovo.islower() == True:
-    #     mala_pismena = []
-    #     mala_pismena.append(slovo)
-    #     vyskyt_slov["Počet slov psaných malým písmenem"] = tuple(enumerate(mala_pismena))[-1][0]
+graf = {}
+
+for x in graf_priprava:
+    if x not in graf:
+        graf[x] = graf_priprava.count(x)
 
 
 
+delka = "délka"
+vyskyt = "výskyt"
+pocet = "počet"
+print()
+print(f"|{delka:^5}|{vyskyt:^15}|{pocet:>5}")
+for a, b in sorted(graf.items()):
+    hvezdicky = int(b) * "*"
+    print(f"|{a:^5}|{hvezdicky:<15}|{b:<5}")
 
-# print(pocet_velke)
+
+
+
 
 
