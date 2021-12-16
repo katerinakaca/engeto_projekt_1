@@ -37,7 +37,7 @@ oddelovac1 = 30 * "-"
 registrovani_uzivatele = ["bob", "ann", "mike", "liz"]
 hesla = ["123", "pass123", "password123", "pass123"]
 uzivatele_hesla = dict(zip(registrovani_uzivatele, hesla))
-print(uzivatele_hesla)
+
 uzivatel = input("Jméno: ")
 heslo = input("Heslo: ")
 
@@ -49,8 +49,11 @@ else:
     exit()
 
 #výběr textu
-print("Máte k dispozici 3 texty.\nVýběr textu musí být číslo od 1 do 3.")
+
+print("Máte k dispozici 3 texty.\nZadejte ČÍSLO od 1 do 3.")
+print(oddelovac)
 vyber_textu = input("Zadejte číslo textu: ")
+print(oddelovac)
 if not vyber_textu.isnumeric():
     print("Tento text není k dispozici. Ukončuji.")
     exit()
@@ -63,7 +66,7 @@ else:
 #výpis textu
 
 vybrany_text = TEXTS[int(vyber_textu) - 1]
-print(vybrany_text)
+
 
 vycisteny_text = []
 for slova in vybrany_text.split():
@@ -92,13 +95,13 @@ for slovo in vycisteny_text:
 
 
 
-print(pocet_slov)
-print(pocet_velka_zac)
-print(pocet_velka)
-print(pocet_mala)
-print(pocet_cisel)
-print(suma_cisel)
-print(graf_priprava)
+print("Celkový počet slov v textu je:", pocet_slov)
+print("Počet slov začínajících velkým písmenem je: ", pocet_velka_zac)
+print("Počet slov psaných velkým písmem je: ", pocet_velka)
+print("Počet slov psaných malým písmem je: ", pocet_mala)
+print("Počet čísel v textu je: ", pocet_cisel)
+print("Součet čísel je: ", suma_cisel)
+
 
 graf = {}
 
@@ -111,11 +114,12 @@ for x in graf_priprava:
 delka = "délka"
 vyskyt = "výskyt"
 pocet = "počet"
-print()
-print(f"|{delka:^5}|{vyskyt:^15}|{pocet:>5}")
+print(oddelovac)
+print(f"|{delka:^5}|{vyskyt:^16}|{pocet:>5}|")
+print(oddelovac)
 for a, b in sorted(graf.items()):
     hvezdicky = int(b) * "*"
-    print(f"|{a:^5}|{hvezdicky:<15}|{b:<5}")
+    print(f"|{a:^5}|{hvezdicky:<16}|{b:^5}|")
 
 
 
