@@ -34,19 +34,19 @@ garpike and stingray are also present.'''
 # uživatelský vstup
 oddelovac = 30 * "="
 oddelovac1 = 30 * "-"
-# registrovani_uzivatele = ["bob", "ann", "mike", "liz"]
-# hesla = ["123", "pass123", "password123", "pass123"]
-# uzivatele_hesla = dict(zip(registrovani_uzivatele, hesla))
-#
-# uzivatel = input("Jméno: ")
-# heslo = input("Heslo: ")
-#
-# if uzivatel in uzivatele_hesla and uzivatele_hesla[uzivatel] == heslo:
-#     print(f"{oddelovac1}\n     Vítej uživateli {uzivatel}!\n{oddelovac1}")
-#
-# else:
-#     print("Zadali jste neplatné uživatelské jméno nebo heslo. Ukončuji...")
-#     exit()
+registrovani_uzivatele = ["bob", "ann", "mike", "liz"]
+hesla = ["123", "pass123", "password123", "pass123"]
+uzivatele_hesla = dict(zip(registrovani_uzivatele, hesla))
+
+uzivatel = input("Jméno: ")
+heslo = input("Heslo: ")
+
+if uzivatel in uzivatele_hesla and uzivatele_hesla[uzivatel] == heslo:
+    print(f"{oddelovac1}\n     Vítej uživateli {uzivatel}!\n{oddelovac1}")
+
+else:
+    print("Zadali jste neplatné uživatelské jméno nebo heslo. Ukončuji...")
+    exit()
 
 #výběr textu
 
@@ -109,21 +109,21 @@ for x in graf_priprava:
     if x not in graf:
         graf[x] = graf_priprava.count(x)
 
+#úprava mezer v grafu
 nejvice_hvezdicek_v_grafu = sorted(graf.values())[-1]
-print(nejvice_hvezdicek_v_grafu)
 oddelovac_grafu = (nejvice_hvezdicek_v_grafu + 14) * "="
-cislo_pro_mezeru = nejvice_hvezdicek_v_grafu - 14
+cislo_pro_mezeru = nejvice_hvezdicek_v_grafu
 
-
+#vypsání grafu
 delka = "délka"
 vyskyt = "výskyt"
 pocet = "počet"
 print(oddelovac_grafu)
-print(f"|{delka:^5}|{vyskyt:^16}|{pocet:>5}|")
+print(f"|{delka:^5}|{vyskyt:^{cislo_pro_mezeru}}|{pocet:^5}|")
 print(oddelovac_grafu)
 for a, b in sorted(graf.items()):
     hvezdicky = int(b) * "*"
-    print(f"|{a:^5}|{hvezdicky:<16}|{b:^5}|")
+    print(f"|{a:^5}|{hvezdicky:<{cislo_pro_mezeru}}|{b:^5}|")
 
 
 
